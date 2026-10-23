@@ -2097,7 +2097,26 @@ ul {
   object-fit: cover;
 }
 
-/* Parent Overview Row */
+/* Student Status Overview Row (Attendance, Position, Conduct, Fees) */
+.student-metrics-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 1024px) {
+  .student-metrics-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .student-metrics-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .parent-metrics-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

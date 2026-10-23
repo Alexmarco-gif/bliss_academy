@@ -1,42 +1,40 @@
 /**
- * Bliss Academy - Core Application Logic
- * Powers Public Website, Role-based Dashboards (Student, Parent, Teacher),
- * Interactive Academic Calendar, Working Announcement Publisher,
- * Admission Form Submissions, and Phase 2 Pitch Modals.
+ * Bliss Academy - Core Application Engine
+ * Location: Alihame, Agbor, Delta State, Nigeria
+ * Simplified 2-Portal Architecture: Student Portal & Teacher Portal
+ * Unified Student Portal includes Attendance, GPA, Conduct & School Fee Booking.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   // Application State
   const state = {
     currentView: 'website', // 'website' | 'portal'
-    currentRole: 'student', // 'student' | 'parent' | 'teacher'
+    currentRole: 'student', // 'student' | 'teacher'
     calendarMonth: 8,       // September (0-indexed: 8)
-    calendarYear: 2025,
+    calendarYear: 2026,
     selectedDate: null,
-    activeChildId: 'STU-8021',
     announcements: [...BLISS_DATA.announcements],
     applications: []
   };
 
-  // Load persisted announcements & applications from localStorage
+  // Load persisted announcements & applications
   try {
-    const savedAnnouncements = localStorage.getItem('bliss_announcements');
+    const savedAnnouncements = localStorage.getItem('bliss_announcements_2026');
     if (savedAnnouncements) {
       state.announcements = JSON.parse(savedAnnouncements);
     }
-    const savedApps = localStorage.getItem('bliss_applications');
+    const savedApps = localStorage.getItem('bliss_applications_2026');
     if (savedApps) {
       state.applications = JSON.parse(savedApps);
     }
   } catch (e) {
-    console.warn('LocalStorage access error:', e);
+    console.warn('Storage warning:', e);
   }
 
   // DOM Elements
   const publicView = document.getElementById('public-site-view');
   const portalView = document.getElementById('portal-view');
   const studentContent = document.getElementById('student-view-content');
-  const parentContent = document.getElementById('parent-view-content');
   const teacherContent = document.getElementById('teacher-view-content');
   const roleButtons = document.querySelectorAll('.role-pill-btn');
 
@@ -57,17 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Expose to window for inline onclicks
   window.switchToView = switchToView;
 
   /* ==========================================================================
-     ROLE SWITCHING (Student, Parent, Teacher)
+     ROLE SWITCHING (Student Portal vs Teacher Portal)
      ========================================================================== */
   function switchRole(role) {
-    if (!['student', 'parent', 'teacher'].includes(role)) return;
+    if (!['student', 'teacher'].includes(role)) return;
     state.currentRole = role;
 
-    // Update active pill button in topbar
+    // Update active pill button
     roleButtons.forEach(btn => {
       if (btn.dataset.role === role) {
         btn.classList.add('active');
@@ -77,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     renderRoleDashboard();
-    showToast(`Switched to ${role.toUpperCase()} View`, '👤');
+    showToast(`Switched to ${role === 'student' ? 'Student Portal' : 'Teacher Portal'}`, '👤');
   }
 
   window.switchRole = switchRole;
@@ -85,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render the active role dashboard
   function renderRoleDashboard() {
     studentContent.style.display = 'none';
-    parentContent.style.display = 'none';
     teacherContent.style.display = 'none';
 
     const userAvatar = document.getElementById('topbar-user-avatar');
@@ -96,42 +92,66 @@ document.addEventListener('DOMContentLoaded', () => {
       studentContent.style.display = 'block';
       userAvatar.src = BLISS_DATA.student.avatar;
       userName.textContent = BLISS_DATA.student.name;
-      userRoleText.textContent = `${BLISS_DATA.student.grade} Scholar`;
+      userRoleText.textContent = `${BLISS_DATA.student.grade}`;
       renderStudentDashboard();
-    } else if (state.currentRole === 'parent') {
-      parentContent.style.display = 'block';
-      userAvatar.src = BLISS_DATA.parent.avatar;
-      userName.textContent = BLISS_DATA.parent.name;
-      userRoleText.textContent = 'Parent / Guardian';
-      renderParentDashboard();
     } else if (state.currentRole === 'teacher') {
       teacherContent.style.display = 'block';
       userAvatar.src = BLISS_DATA.teacher.avatar;
       userName.textContent = BLISS_DATA.teacher.name;
-      userRoleText.textContent = 'Faculty Head';
+      userRoleText.textContent = 'Senior STEM Lead';
       renderTeacherDashboard();
     }
 
-    // Always re-render live feed on role change
     renderAnnouncementsFeed();
   }
 
   /* ==========================================================================
-     QUICK ONE-TAP DEMO LOGIN (For Pitch Presentations)
+     1-CLICK QUICK DEMO LOGIN
      ========================================================================== */
   function quickDemoLogin(role) {
     switchToView('portal');
     switchRole(role);
-    showToast(`Welcome! Logged in as Demo ${role.toUpperCase()}`, '🚀');
+    showToast(`Logged into ${role === 'student' ? 'Student Portal' : 'Teacher Portal'}!`, '🚀');
   }
 
   window.quickDemoLogin = quickDemoLogin;
 
   /* ==========================================================================
-     ROLE 1: STUDENT DASHBOARD RENDERING
+     ROLE 1: STUDENT PORTAL RENDERING
+     Consolidates Attendance, Performance/GPA, Conduct, Fees & Schedule
      ========================================================================== */
   function renderStudentDashboard() {
-    // Schedule rendering
+    // 1. Performance & Conduct Elements
+    const gpaElem = document.getElementById('stu-gpa-val');
+    const attElem = document.getElementById('stu-att-val');
+    const rankElem = document.getElementById('stu-rank-val');
+    const conductElem = document.getElementById('stu-conduct-val');
+
+    if (gpaElem) gpaElem.textContent = BLISS_DATA.student.performance.gpa;
+    if (attElem) attElem.textContent = BLISS_DATA.student.attendance.rate;
+    if (rankElem) rankElem.textContent = BLISS_DATA.student.performance.classRank;
+    if (conductElem) conductElem.textContent = BLISS_DATA.student.performance.conduct;
+
+    // 2. Fee Booking & Invoicing Card
+    const balanceElem = document.getElementById('stu-fee-balance');
+    const invoiceTableBody = document.getElementById('stu-invoice-tbody');
+
+    if (balanceElem) {
+      balanceElem.textContent = `₦${BLISS_DATA.student.billing.outstandingBalance.toLocaleString()}`;
+    }
+
+    if (invoiceTableBody) {
+      invoiceTableBody.innerHTML = BLISS_DATA.student.billing.items.map(item => `
+        <tr>
+          <td><strong>${item.desc}</strong></td>
+          <td>₦${item.amount.toLocaleString()}</td>
+          <td><span class="status-badge ${item.status === 'PAID' ? 'status-paid' : 'status-pending'}">${item.status}</span></td>
+          <td style="color: var(--text-muted);">${item.date}</td>
+        </tr>
+      `).join('');
+    }
+
+    // 3. Today's Timetable
     const scheduleContainer = document.getElementById('student-schedule-list');
     if (scheduleContainer) {
       scheduleContainer.innerHTML = BLISS_DATA.student.todaySchedule.map(item => `
@@ -145,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `).join('');
     }
 
-    // Tasks rendering
+    // 4. Pending Homework Tasks
     const tasksContainer = document.getElementById('student-tasks-list');
     if (tasksContainer) {
       tasksContainer.innerHTML = BLISS_DATA.student.pendingTasks.map(task => `
@@ -153,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <input type="checkbox" class="task-checkbox" id="${task.id}" onchange="toggleTaskDone('${task.id}')">
           <div class="task-body">
             <label for="${task.id}" class="task-title">${task.title}</label>
-            <div class="task-meta">${task.subject} • Due: ${task.due}</div>
+            <div class="task-meta">${task.subject} &bull; Due: ${task.due}</div>
           </div>
         </div>
       `).join('');
@@ -165,70 +185,25 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   /* ==========================================================================
-     ROLE 2: PARENT DASHBOARD RENDERING
-     ========================================================================== */
-  function renderParentDashboard() {
-    const activeChild = BLISS_DATA.parent.children.find(c => c.id === state.activeChildId) || BLISS_DATA.parent.children[0];
-
-    // Child switcher buttons
-    const childListContainer = document.getElementById('parent-child-pills');
-    if (childListContainer) {
-      childListContainer.innerHTML = BLISS_DATA.parent.children.map(child => `
-        <button class="child-select-btn ${child.id === activeChild.id ? 'active' : ''}" onclick="selectChild('${child.id}')">
-          <img src="${child.avatar}" alt="${child.name}">
-          <span><strong>${child.name}</strong> (${child.grade.split(' ')[0]})</span>
-        </button>
-      `).join('');
-    }
-
-    // Update child stats
-    document.getElementById('child-attendance-val').textContent = activeChild.attendance;
-    document.getElementById('child-present-days').textContent = `${activeChild.presentDays} of 50 school days`;
-    document.getElementById('child-gpa-val').textContent = activeChild.gpa;
-    document.getElementById('child-teacher-val').textContent = activeChild.classTeacher;
-
-    // Render invoice breakdown
-    const invoiceTableBody = document.getElementById('parent-invoice-tbody');
-    if (invoiceTableBody) {
-      invoiceTableBody.innerHTML = BLISS_DATA.parent.billing.items.map(item => `
-        <tr>
-          <td><strong>${item.desc}</strong></td>
-          <td>₦${item.amount.toLocaleString()}</td>
-          <td><span class="status-badge ${item.status === 'PAID' ? 'status-paid' : 'status-pending'}">${item.status}</span></td>
-          <td style="color: var(--text-muted);">${item.date}</td>
-        </tr>
-      `).join('');
-    }
-
-    document.getElementById('parent-due-balance').textContent = `₦${BLISS_DATA.parent.billing.outstandingBalance.toLocaleString()}`;
-  }
-
-  window.selectChild = function(childId) {
-    state.activeChildId = childId;
-    renderParentDashboard();
-    showToast(`Viewing details for ${state.activeChildId === 'STU-8021' ? 'Alex Rivera' : 'Maya Rivera'}`, '👶');
-  };
-
-  /* ==========================================================================
-     ROLE 3: TEACHER DASHBOARD & LIVE POST CREATOR (Qurtubiks Image 1)
+     ROLE 2: TEACHER PORTAL RENDERING
+     Class Roster, Lecture Schedule, and Working Announcement Composer
      ========================================================================== */
   function renderTeacherDashboard() {
-    // Render roster
     const rosterContainer = document.getElementById('teacher-roster-list');
     if (rosterContainer) {
       rosterContainer.innerHTML = BLISS_DATA.teacher.roster.map(st => `
         <div class="roster-student-item">
           <div>
             <div class="student-roster-name">${st.name}</div>
-            <div class="student-roster-roll">${st.roll} • Att: ${st.attendance}</div>
+            <div class="student-roster-roll">${st.roll} &bull; Att: ${st.attendance}</div>
           </div>
-          <span class="roster-score">${st.gradeScore}</span>
+          <span class="roster-score">${st.score}</span>
         </div>
       `).join('');
     }
   }
 
-  // Working Post / Announcement publisher
+  // Working Post / Announcement publisher for Teachers
   const publishBtn = document.getElementById('btn-publish-announcement');
   if (publishBtn) {
     publishBtn.addEventListener('click', () => {
@@ -238,14 +213,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const title = titleInput.value.trim();
       const content = contentInput.value.trim();
-      const category = categorySelect ? categorySelect.value : 'Announcement';
+      const category = categorySelect ? categorySelect.value : 'Academic Notice';
 
       if (!title || !content) {
-        showToast('Please enter both a title and message content!', '⚠️');
+        showToast('Please enter both title and message content!', '⚠️');
         return;
       }
 
-      // Create new announcement object
       const newPost = {
         id: `post-${Date.now()}`,
         author: BLISS_DATA.teacher.name,
@@ -258,37 +232,32 @@ document.addEventListener('DOMContentLoaded', () => {
         image: null,
         likes: 1,
         commentsCount: 0,
-        tags: ['Live Feed', 'Grade 8A']
+        tags: ['Live Feed', 'SSS 2A']
       };
 
-      // Prepend to array
       state.announcements.unshift(newPost);
 
-      // Persist to localStorage
       try {
-        localStorage.setItem('bliss_announcements', JSON.stringify(state.announcements));
+        localStorage.setItem('bliss_announcements_2026', JSON.stringify(state.announcements));
       } catch (e) {
         console.warn(e);
       }
 
-      // Clear inputs
       titleInput.value = '';
       contentInput.value = '';
 
-      // Re-render
       renderAnnouncementsFeed();
-      showToast('🎉 Announcement published live to students & parents!', '📢');
+      showToast('🎉 Announcement published live to Student Portal!', '📢');
     });
   }
 
   /* ==========================================================================
-     LIVE FEED RENDERING (Shared across all views)
+     LIVE FEED STREAM RENDERING
      ========================================================================== */
   function renderAnnouncementsFeed() {
     const feedContainers = [
       document.getElementById('student-feed-container'),
-      document.getElementById('teacher-feed-container'),
-      document.getElementById('parent-feed-container')
+      document.getElementById('teacher-feed-container')
     ];
 
     const feedHtml = state.announcements.map(post => `
@@ -298,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <img src="${post.authorAvatar}" alt="${post.author}">
             <div class="author-name-text">
               <h4>${post.author}</h4>
-              <span>${post.authorRole} • ${post.date}</span>
+              <span>${post.authorRole} &bull; ${post.date}</span>
             </div>
           </div>
           <span class="post-category-tag">${post.category}</span>
@@ -307,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="post-card-content">${post.content}</p>
         ${post.image ? `
           <div class="post-media-image">
-            <img src="${post.image}" alt="Post Image">
+            <img src="${post.image}" alt="Post Media">
           </div>
         ` : ''}
         <div class="post-actions-strip">
@@ -340,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.openCommentToast = function() {
-    showToast('Student & parent discussion thread active.', '💬');
+    showToast('Class discussion channel active.', '💬');
   };
 
   window.sharePost = function() {
@@ -348,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   /* ==========================================================================
-     INTERACTIVE ACADEMIC CALENDAR (Canadian Bilingual School inspired)
+     INTERACTIVE ACADEMIC CALENDAR (2026/2027 Session)
      ========================================================================== */
   function initCalendar() {
     renderCalendarMonths();
@@ -373,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCalendarMonths();
     renderCalendarDays();
     renderAgendaEvents();
-    showToast(`Viewing calendar for ${BLISS_DATA.calendar.months[monthIdx]} 2025`, '📅');
+    showToast(`Viewing calendar for ${BLISS_DATA.calendar.months[monthIdx]} 2026`, '📅');
   };
 
   function renderCalendarDays() {
@@ -383,20 +352,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     label.textContent = `${BLISS_DATA.calendar.months[state.calendarMonth]} ${state.calendarYear}`;
 
-    // Calculate days in month & first day index
     const firstDayIndex = new Date(state.calendarYear, state.calendarMonth, 1).getDay();
     const daysInMonth = new Date(state.calendarYear, state.calendarMonth + 1, 0).getDate();
 
     let cellsHtml = '';
 
-    // Empty lead cells
     for (let i = 0; i < firstDayIndex; i++) {
       cellsHtml += `<div class="cal-day-cell inactive"></div>`;
     }
 
-    // Days in current month
     for (let day = 1; day <= daysInMonth; day++) {
-      // Check if this day has events
       const hasEvent = BLISS_DATA.calendar.events.some(
         e => e.month === state.calendarMonth && e.day === day && e.year === state.calendarYear
       );
@@ -427,9 +392,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (state.selectedDate) {
       filteredEvents = filteredEvents.filter(e => e.day === state.selectedDate);
-      if (agendaTitle) agendaTitle.textContent = `Events on ${BLISS_DATA.calendar.months[state.calendarMonth]} ${state.selectedDate}, 2025`;
+      if (agendaTitle) agendaTitle.textContent = `Events on ${BLISS_DATA.calendar.months[state.calendarMonth]} ${state.selectedDate}, 2026`;
     } else {
-      if (agendaTitle) agendaTitle.textContent = `All Events for ${BLISS_DATA.calendar.months[state.calendarMonth]} 2025`;
+      if (agendaTitle) agendaTitle.textContent = `Events for ${BLISS_DATA.calendar.months[state.calendarMonth]} 2026`;
     }
 
     if (filteredEvents.length === 0) {
@@ -437,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div style="text-align: center; padding: 30px 10px; color: var(--text-muted);">
           <i class="fa-regular fa-calendar-xmark" style="font-size: 2rem; margin-bottom: 10px; opacity: 0.5;"></i>
           <p style="font-size: 0.88rem;">No events scheduled for this selected date.</p>
-          <button onclick="clearDateFilter()" style="margin-top: 10px; color: var(--accent-coral); font-weight: 700; font-size: 0.8rem; text-decoration: underline;">Show full month schedule</button>
+          <button onclick="clearDateFilter()" style="margin-top: 10px; color: var(--accent-coral); font-weight: 700; font-size: 0.8rem; text-decoration: underline;">Show all month events</button>
         </div>
       `;
       return;
@@ -465,12 +430,12 @@ document.addEventListener('DOMContentLoaded', () => {
   window.showEventDetails = function(eventId) {
     const event = BLISS_DATA.calendar.events.find(e => e.id === eventId);
     if (event) {
-      showToast(`Selected: ${event.title} (${event.time})`, '📌');
+      showToast(`Selected: ${event.title}`, '📌');
     }
   };
 
   /* ==========================================================================
-     ONLINE ADMISSION / APPLICATION FORM (Qurtubiks Form 16208f89... inspired)
+     ONLINE ADMISSION / APPLICATION FORM
      ========================================================================== */
   const admissionForm = document.getElementById('enrollment-application-form');
   if (admissionForm) {
@@ -489,7 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const referenceCode = `BLISS-2025-APP-${Math.floor(1000 + Math.random() * 9000)}`;
+      const referenceCode = `BLISS-2026-APP-${Math.floor(1000 + Math.random() * 9000)}`;
       const newApp = {
         ref: referenceCode,
         studentName,
@@ -503,12 +468,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       state.applications.push(newApp);
       try {
-        localStorage.setItem('bliss_applications', JSON.stringify(state.applications));
+        localStorage.setItem('bliss_applications_2026', JSON.stringify(state.applications));
       } catch (err) {
         console.warn(err);
       }
 
-      // Display Success State inside modal
       const formInner = document.getElementById('admission-modal-inner');
       if (formInner) {
         formInner.innerHTML = `
@@ -517,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <i class="fa-solid fa-check"></i>
             </div>
             <h3 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--primary-navy); margin-bottom: 8px;">Application Submitted Successfully! 🚀</h3>
-            <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 480px; margin: 0 auto 24px;">Thank you, <strong>${parentName}</strong>. We have received your enrollment application for <strong>${studentName}</strong>.</p>
+            <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 480px; margin: 0 auto 24px;">Thank you, <strong>${parentName}</strong>. We have received your application for <strong>${studentName}</strong>.</p>
             
             <div style="background: var(--neutral-bg); border: 2px dashed var(--accent-coral); border-radius: var(--radius-md); padding: 20px; max-width: 440px; margin: 0 auto 24px; text-align: left;">
               <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 800; letter-spacing: 0.5px;">Official Application Reference</div>
@@ -525,15 +489,15 @@ document.addEventListener('DOMContentLoaded', () => {
               <div style="font-size: 0.85rem; color: var(--text-main); line-height: 1.5;">
                 <div><strong>Grade Level:</strong> ${gradeApplying}</div>
                 <div><strong>Mode:</strong> ${learningMode}</div>
-                <div><strong>Confirmation Sent To:</strong> ${parentEmail}</div>
+                <div><strong>Location:</strong> Alihame, Agbor, Delta State</div>
               </div>
             </div>
 
-            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 24px;">Our Admissions Team will contact you within 24 hours to schedule the diagnostic baseline interview.</p>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 24px;">The Admissions Office will contact you within 24 hours to schedule the entrance interview.</p>
             
             <div style="display: flex; gap: 12px; justify-content: center;">
               <button class="btn-hero-primary" onclick="printApplicationSlip('${referenceCode}', '${studentName}', '${gradeApplying}')">
-                <i class="fa-solid fa-print"></i> Print Slip
+                <i class="fa-solid fa-print"></i> Print Voucher
               </button>
               <button class="btn-hero-secondary" onclick="closeModal('admission-modal')">
                 Close
@@ -543,17 +507,17 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
-      showToast(`Application ${referenceCode} logged successfully!`, '🎉');
+      showToast(`Application ${referenceCode} logged!`, '🎉');
     });
   }
 
   window.printApplicationSlip = function(code, name, grade) {
-    showToast(`Printing enrollment voucher for ${name} (${code})`, '🖨️');
+    showToast(`Printing voucher for ${name} (${code})`, '🖨️');
     window.print();
   };
 
   /* ==========================================================================
-     PHASE 2 "COMING SOON" STRATEGIC PITCH MODALS
+     PHASE 2 MODALS & PAYMENT SIMULATION
      ========================================================================== */
   function openModal(modalId) {
     const modal = document.getElementById(modalId);
@@ -574,7 +538,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.openModal = openModal;
   window.closeModal = closeModal;
 
-  // Strategic Phase 2 Opener
   window.openPhase2Modal = function(type) {
     if (type === 'fee-gateway') {
       openModal('payment-gateway-modal');
@@ -583,11 +546,11 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (type === 'cbt-exams') {
       openModal('cbt-modal');
     } else {
-      showToast('This advanced module is scheduled for Phase 2 implementation.', '🚀');
+      showToast('This advanced module is scheduled for Phase 2.', '🚀');
     }
   };
 
-  // Simulate Instant Demo Payment
+  // Simulate Instant Demo Payment (Directly updates Student Portal Fees)
   window.simulatePaymentSuccess = function() {
     const payBtn = document.getElementById('btn-simulate-pay');
     if (payBtn) {
@@ -596,19 +559,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setTimeout(() => {
-      // Update balance
-      BLISS_DATA.parent.billing.outstandingBalance = 0;
-      BLISS_DATA.parent.billing.items.forEach(i => i.status = 'PAID');
+      // Update student billing state
+      BLISS_DATA.student.billing.outstandingBalance = 0;
+      BLISS_DATA.student.billing.items.forEach(i => i.status = 'PAID');
       
       closeModal('payment-gateway-modal');
-      renderParentDashboard();
+      renderStudentDashboard();
 
-      showToast('Payment of ₦480,000 Verified! Receipt emailed to parent.', '💳');
+      showToast('Payment of ₦480,000 Verified! Official receipt generated.', '💳');
       if (payBtn) {
         payBtn.disabled = false;
-        payBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Authorize Payment (₦480,000)';
+        payBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Authorize Demo Payment (₦480,000)';
       }
-    }, 1500);
+    }, 1200);
   };
 
   /* ==========================================================================
@@ -638,13 +601,15 @@ document.addEventListener('DOMContentLoaded', () => {
       switchRole('student');
     } else if (tabName === 'feed') {
       if (state.currentView !== 'portal') switchToView('portal');
-      switchRole('teacher');
+      switchRole('student');
+      document.getElementById('student-feed-container')?.scrollIntoView({ behavior: 'smooth' });
     } else if (tabName === 'fees') {
       if (state.currentView !== 'portal') switchToView('portal');
-      switchRole('parent');
+      switchRole('student');
       window.openPhase2Modal('fee-gateway');
-    } else if (tabName === 'profile') {
-      openModal('demo-selector-modal');
+    } else if (tabName === 'teacher') {
+      if (state.currentView !== 'portal') switchToView('portal');
+      switchRole('teacher');
     }
   };
 
@@ -670,13 +635,12 @@ document.addEventListener('DOMContentLoaded', () => {
       toast.style.transform = 'translateX(50px)';
       toast.style.transition = 'all 0.3s ease';
       setTimeout(() => toast.remove(), 300);
-    }, 3500);
+    }, 3200);
   }
 
   window.showToast = showToast;
 
-  // Initialize all components
+  // Initialize
   initCalendar();
   renderAnnouncementsFeed();
-  console.log('Bliss Academy MVP Initialized Successfully.');
 });
