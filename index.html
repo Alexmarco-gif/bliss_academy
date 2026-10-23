@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bliss Academy Lagos | Excellence, Character & Global Leadership</title>
+  <meta name="description" content="Bliss Academy is a premier Nigerian international academy in Lekki, Lagos shaping future African leaders through advanced STEM, Cambridge & WAEC curricula, arts, and character development.">
+
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       VIEW A: PUBLIC SCHOOL WEBSITE (EduNova & Canadian Bilingual inspired)
+       ========================================================================== -->
+  <div id="public-site-view">
+    
+    <!-- Top Announcement Ticker / Alert Bar -->
+    <div class="top-alert-ticker">
+      <div class="top-alert-content">
+        <span class="top-badge">Admissions 2025/2026</span>
+        <span>Enrollment now open for Early Years, Primary, JSS & SSS College Levels.</span>
+        <span class="top-action-link" onclick="openModal('admission-modal')">Apply Online Today &rarr;</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 0.75rem; color: rgba(255,255,255,0.7);">Board Demo Access:</span>
+        <button class="quick-demo-pill" onclick="quickDemoLogin('student')">
+          <span class="live-pulse"></span> Student Portal
+        </button>
+        <button class="quick-demo-pill" onclick="quickDemoLogin('parent')">
+          Parent Portal
+        </button>
+        <button class="quick-demo-pill" onclick="quickDemoLogin('teacher')">
+          Teacher Portal
+        </button>
+      </div>
+    </div>
+
+    <!-- Public Main Sticky Header -->
+    <header class="public-nav-header">
+      <div class="nav-container">
+        <!-- Brand Crest & Name -->
+        <div class="brand-identity" onclick="switchToView('website')">
+          <div class="brand-crest">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div class="brand-text">
+            <h1>BLISS ACADEMY</h1>
+            <span>Lekki, Lagos &bull; Cambridge &bull; WAEC</span>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="nav-menu-links">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#about" class="nav-link">About Us</a>
+          <a href="#programs" class="nav-link">Curriculum</a>
+          <a href="#academic-calendar" class="nav-link">Academic Calendar</a>
+          <a href="#testimonials" class="nav-link">Parents Voice</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Navigation Actions -->
+        <div class="nav-actions">
+          <button class="btn-portal-launch" onclick="openModal('demo-selector-modal')">
+            <i class="fa-solid fa-layer-group" style="color: var(--accent-gold);"></i>
+            <span>Portal Login</span>
+          </button>
+          <button class="btn-apply-main" onclick="openModal('admission-modal')">
+            <span>Apply Now</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <button class="btn-hamburger" id="hamburger-toggle-btn" aria-label="Toggle Navigation">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation Drawer -->
+      <div id="mobile-drawer-menu" class="mobile-drawer-menu">
+        <div class="mobile-drawer-links">
+          <a href="#home" class="mobile-nav-link" onclick="toggleMobileMenu()">Home</a>
+          <a href="#about" class="mobile-nav-link" onclick="toggleMobileMenu()">About Us</a>
+          <a href="#programs" class="mobile-nav-link" onclick="toggleMobileMenu()">Curriculum</a>
+          <a href="#academic-calendar" class="mobile-nav-link" onclick="toggleMobileMenu()">Academic Calendar</a>
+          <a href="#testimonials" class="mobile-nav-link" onclick="toggleMobileMenu()">Parents Voice</a>
+          <a href="#contact" class="mobile-nav-link" onclick="toggleMobileMenu()">Contact</a>
+        </div>
+        <div class="mobile-drawer-actions">
+          <button class="btn-portal-launch" style="width: 100%; justify-content: center;" onclick="toggleMobileMenu(); openModal('demo-selector-modal');">
+            <i class="fa-solid fa-layer-group" style="color: var(--accent-gold);"></i>
+            <span>Portal Login</span>
+          </button>
+          <button class="btn-apply-main" style="width: 100%; justify-content: center; margin-top: 10px;" onclick="toggleMobileMenu(); openModal('admission-modal');">
+            <span>Apply Now</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section (EduNova + Canadian Bilingual inspired, Nigerian Students) -->
+    <section class="public-hero-section" id="home">
+      <div class="hero-wrapper">
+        <div class="hero-content">
+          <div class="hero-pill-badge">
+            <i class="fa-solid fa-star"></i>
+            <span>Shaping Minds &bull; Building African Giants</span>
+          </div>
+          <h1 class="hero-title">
+            Excellence in Education For A <span class="highlight-gold">Better Tomorrow</span>
+          </h1>
+          <p class="hero-description">
+            Nurturing Nigerian scholars with dual Cambridge and National curricula, state-of-the-art STEM robotics laboratories, and strong moral values to thrive as visionary global leaders.
+          </p>
+
+          <div class="hero-actions-group">
+            <button class="btn-hero-primary" onclick="openModal('admission-modal')">
+              <span>Start Enrollment</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button class="btn-hero-secondary" onclick="openModal('video-tour-modal')">
+              <i class="fa-solid fa-circle-play" style="color: var(--accent-coral); font-size: 1.2rem;"></i>
+              <span>Watch Campus Tour</span>
+            </button>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="hero-trust-indicators">
+            <div class="trust-avatars">
+              <img src="assets/images/avatar_parent.jpg" alt="Parent">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=80" alt="Parent">
+              <img src="assets/images/avatar_teacher.jpg" alt="Educator">
+              <img src="assets/images/avatar_student.jpg" alt="Student">
+            </div>
+            <div class="trust-rating-text">
+              <p>Rated 4.9 / 5 by Nigerian Families</p>
+              <span>Over 1,500+ active scholars & alumni worldwide</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Media Stack with Authentic Nigerian Students Photo -->
+        <div class="hero-media-container">
+          <div class="hero-main-card">
+            <img src="assets/images/bliss_hero_nigeria.jpg" alt="Bliss Academy Nigerian Scholars">
+          </div>
+          <!-- Floating Badge Top Right -->
+          <div class="hero-floating-badge badge-top-right">
+            <div class="badge-icon-box icon-gold">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <div class="badge-text-box">
+              <h4>Top 1% Academic Ranking</h4>
+              <p>Cambridge & WAEC Distinction</p>
+            </div>
+          </div>
+          <!-- Floating Badge Bottom Left -->
+          <div class="hero-floating-badge badge-bottom-left">
+            <div class="badge-icon-box icon-green">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div class="badge-text-box">
+              <h4>99.4% University Placement</h4>
+              <p>UK, US, Canada & Top Nigerian Unis</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Link to Connect (Canadian Bilingual School inspired) -->
+    <section class="quick-connect-section">
+      <div class="quick-connect-header">
+        <div class="section-label">Direct School Services</div>
+        <h2 class="section-heading-sm">Quick Link to Connect</h2>
+      </div>
+
+      <div class="quick-cards-grid">
+        <!-- Card 1: Registration Enquiry -->
+        <div class="quick-card">
+          <div>
+            <div class="quick-card-icon">
+              <i class="fa-regular fa-clipboard"></i>
+            </div>
+            <h3 class="quick-card-title">Registration Enquiry</h3>
+            <p class="quick-card-desc">
+              Submit an online enrollment enquiry or book an executive tour of our Lekki campus.
+            </p>
+          </div>
+          <button class="btn-card-action" onclick="openModal('admission-modal')">
+            <span>Enquire Now</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Card 2: Fee Payment (Highlighted Red/Coral) -->
+        <div class="quick-card featured-card">
+          <div>
+            <div class="quick-card-icon">
+              <i class="fa-solid fa-credit-card"></i>
+            </div>
+            <h3 class="quick-card-title">Fee Payment</h3>
+            <p class="quick-card-desc">
+              Fast, secure online tuition payments with automated receipts and detailed installment management.
+            </p>
+          </div>
+          <button class="btn-card-action" onclick="openPhase2Modal('fee-gateway')">
+            <span>Pay Fees Online</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Card 3: Parent Portal -->
+        <div class="quick-card">
+          <div>
+            <div class="quick-card-icon">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <h3 class="quick-card-title">Parent Portal</h3>
+            <p class="quick-card-desc">
+              Access real-time attendance, daily teacher notes, academic assessments, and school circulars.
+            </p>
+          </div>
+          <button class="btn-card-action" onclick="quickDemoLogin('parent')">
+            <span>View Portal</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Card 4: Academic Calendar -->
+        <div class="quick-card">
+          <div>
+            <div class="quick-card-icon">
+              <i class="fa-regular fa-calendar-check"></i>
+            </div>
+            <h3 class="quick-card-title">Academic Calendar</h3>
+            <p class="quick-card-desc">
+              Stay ahead of exam timetables, PTA forums, sporting fixtures, and mid-term vacation dates.
+            </p>
+          </div>
+          <a href="#academic-calendar" class="btn-card-action">
+            <span>Explore Dates</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Metrics & Credibility Bar -->
+    <section class="metrics-strip-section">
+      <div class="metrics-container">
+        <div class="metric-item">
+          <div class="metric-number">25+</div>
+          <div class="metric-label">Years of Educational Leadership</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-number">1,500+</div>
+          <div class="metric-label">Scholars Enrolled</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-number">120+</div>
+          <div class="metric-label">Certified Educators</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-number">50+</div>
+          <div class="metric-label">National & Global Accolades</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-number">98%</div>
+          <div class="metric-label">Parent Satisfaction Score</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission, Vision & About Bliss Academy (Lekki Campus) -->
+    <section class="about-section" id="about">
+      <div class="about-grid">
+        <div class="about-media-stack">
+          <div class="about-image-card">
+            <img src="assets/images/bliss_campus_nigeria.jpg" alt="Bliss Academy Lekki Campus">
+          </div>
+          <div class="about-floating-card">
+            <div class="brand-crest" style="width: 40px; height: 40px; font-size: 1rem;">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <div>
+              <div style="font-weight: 800; font-size: 0.95rem; color: var(--primary-navy);">Established 1999</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">25 Years of Nurturing Icons</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content-block">
+          <div class="section-label">About Our Institution</div>
+          <h2>A Heritage of Rigor, Innovation & African Pride</h2>
+          <p>
+            Located in Lekki, Lagos, Bliss Academy combines the highest standards of international education with rich Nigerian cultural heritage and character training. We foster critical inquiry, scientific curiosity, and moral groundedness across Early Years, Primary, and College levels.
+          </p>
+
+          <div class="mission-vision-cards">
+            <!-- Mission -->
+            <div class="mv-card">
+              <div class="mv-icon-title">
+                <i class="fa-solid fa-bullseye mv-icon"></i>
+                <h3>Our Mission</h3>
+              </div>
+              <p>
+                To provide a transformative, world-class education that empowers Nigerian youth to achieve academic mastery, innovate with technology, and lead ethically.
+              </p>
+            </div>
+
+            <!-- Vision -->
+            <div class="mv-card">
+              <div class="mv-icon-title">
+                <i class="fa-solid fa-eye mv-icon"></i>
+                <h3>Our Vision</h3>
+              </div>
+              <p>
+                To stand as West Africa's leading center of scholastic excellence, recognized globally for groundbreaking STEM innovation, artistic expression, and leadership.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programs We Offer (EduNova style, Nigerian STEM photo) -->
+    <section class="programs-section" id="programs">
+      <div class="section-title-center">
+        <div class="section-label">Curriculum Highlights</div>
+        <h2>Programs Designed for Modern Excellence</h2>
+        <p>A balanced synthesis of Cambridge international examinations, WAEC excellence, autonomous robotics, athletics, and the arts.</p>
+      </div>
+
+      <div class="programs-grid">
+        <!-- Program 1: STEM -->
+        <div class="program-card">
+          <div>
+            <div class="prog-icon-badge" style="background: #FFF1EE; color: #FF6B4A;">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <h3>STEM & Robotics Innovation</h3>
+            <span class="prog-sub">Autonomous Rovers & Python Coding</span>
+            <p>From visual coding in primary grades to circuit design, solar IoT prototyping, and competitive robotics in senior college.</p>
+          </div>
+          <a href="javascript:void(0)" class="prog-link" onclick="openModal('admission-modal')">
+            <span>Explore Curriculum</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Program 2: Arts -->
+        <div class="program-card">
+          <div>
+            <div class="prog-icon-badge" style="background: #F3EEFF; color: #8B5CF6;">
+              <i class="fa-solid fa-palette"></i>
+            </div>
+            <h3>Visual & Performing Arts</h3>
+            <span class="prog-sub">Theatre, Orchestral Music & Studio Art</span>
+            <p>Classical piano, talking drums, digital media production, and dramatic theatre celebrating African culture and global classics.</p>
+          </div>
+          <a href="javascript:void(0)" class="prog-link" onclick="openModal('admission-modal')">
+            <span>Explore Curriculum</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Program 3: Sports -->
+        <div class="program-card">
+          <div>
+            <div class="prog-icon-badge" style="background: #ECFDF5; color: #10B981;">
+              <i class="fa-solid fa-volleyball"></i>
+            </div>
+            <h3>Athletics & House Sports</h3>
+            <span class="prog-sub">Emerald, Sapphire, Topaz & Ruby Houses</span>
+            <p>Olympic-size swimming pools, FIFA-standard football turf, tennis courts, and martial arts fostering discipline, stamina, and grit.</p>
+          </div>
+          <a href="javascript:void(0)" class="prog-link" onclick="openModal('admission-modal')">
+            <span>Explore Curriculum</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Program 4: Languages -->
+        <div class="program-card">
+          <div>
+            <div class="prog-icon-badge" style="background: #EFF6FF; color: #2563EB;">
+              <i class="fa-solid fa-earth-americas"></i>
+            </div>
+            <h3>Global Languages & Diplomacy</h3>
+            <span class="prog-sub">French, Mandarin & African Oratory</span>
+            <p>Language labs, cultural immersion, and Model United Nations debate training preparing scholars for international diplomacy.</p>
+          </div>
+          <a href="javascript:void(0)" class="prog-link" onclick="openModal('admission-modal')">
+            <span>Explore Curriculum</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Academic Calendar Section (Canadian Bilingual School inspired) -->
+    <section class="calendar-section" id="academic-calendar">
+      <div class="section-title-center" style="margin-bottom: 35px;">
+        <div class="section-label">Term Schedules & Key Dates</div>
+        <h2>Interactive Academic Calendar</h2>
+        <p>Select any month or specific date to explore term resumptions, continuous assessments, fees deadlines, and PTA assemblies.</p>
+      </div>
+
+      <div class="calendar-widget-wrapper">
+        <!-- Column 1: Month Switcher -->
+        <div class="cal-months-sidebar">
+          <div class="cal-year-header">
+            <h4>2025</h4>
+            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Session 25/26</span>
+          </div>
+          <div class="cal-months-list" id="cal-months-list">
+            <!-- Dynamic months rendered via app.js -->
+          </div>
+        </div>
+
+        <!-- Column 2: Calendar Days Grid -->
+        <div class="cal-grid-area">
+          <div class="cal-header-row">
+            <h3 class="cal-current-label" id="cal-month-name-label">September 2025</h3>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">
+              <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-coral); margin-right: 4px;"></span>
+              Events Scheduled
+            </div>
+          </div>
+
+          <div class="cal-weekdays">
+            <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+          </div>
+
+          <div class="cal-days-grid" id="cal-days-grid">
+            <!-- Dynamic day cells rendered via app.js -->
+          </div>
+        </div>
+
+        <!-- Column 3: Event Agenda List -->
+        <div class="cal-events-agenda">
+          <div class="agenda-header">
+            <h4 id="agenda-filter-title">Events for September 2025</h4>
+            <button onclick="clearDateFilter()" style="font-size: 0.75rem; color: var(--accent-coral); font-weight: 700;">Reset Filter</button>
+          </div>
+          <div class="agenda-items-container" id="agenda-events-container">
+            <!-- Dynamic event cards rendered via app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Parent & Student Testimonials (EduNova inspired, Nigerian Parents) -->
+    <section class="testimonials-section" id="testimonials">
+      <div class="section-title-center">
+        <div class="section-label">Community Voices</div>
+        <h2>What Nigerian Parents Say About Bliss Academy</h2>
+        <p>Hear directly from prominent families who entrust us with their children's education and moral upbringing.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <div>
+            <div class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="testimonial-quote">
+              "The robotics and STEM curriculum at Bliss Academy is truly world-class. My son Adebayo has already built autonomous rovers in school! The transparent portal updates give us 100% peace of mind."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80" alt="Parent">
+            <div class="author-info">
+              <h5>Engr. Olumide Balogun, FNSE</h5>
+              <p>Parent of SSS 2 & JSS 1 Scholars</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <div>
+            <div class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="testimonial-quote">
+              "Bliss Academy strikes the ideal balance between rigorous Cambridge international standards and Nigerian moral values. Being able to track attendance, fees, and homework from my phone is effortless."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <img src="assets/images/avatar_parent.jpg" alt="Parent">
+            <div class="author-info">
+              <h5>Dr. (Mrs.) Chioma Ezechukwu</h5>
+              <p>Consultant Physician & PTA Member</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <div>
+            <div class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="testimonial-quote">
+              "The dedicated attention from the teachers is exceptional. When I log into the parent portal, I see continuous assessments and teacher circulars immediately. It is the gold standard for Lagos private schools."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80" alt="Parent">
+            <div class="author-info">
+              <h5>Alhaji Farouk Ibrahim</h5>
+              <p>Parent of Primary 4 Scholar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admissions Open Call-to-Action Strip -->
+    <section class="admissions-cta-strip">
+      <div class="cta-banner-card">
+        <div class="cta-banner-text">
+          <h3>Admissions Open for Academic Session 2025 – 2026</h3>
+          <p>Limited seats available across Creche, Primary, JSS, and SSS College levels. Give your child the foundation for a lifetime of distinction.</p>
+        </div>
+        <div class="cta-banner-actions">
+          <button class="btn-cta-gold" onclick="openModal('admission-modal')">
+            <span>Apply Online Now</span>
+            <i class="fa-solid fa-arrow-right" style="margin-left: 6px;"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Public Site Footer -->
+    <footer class="public-site-footer" id="contact">
+      <div class="footer-top-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-brand">
+          <div class="brand-identity" style="color: #FFFFFF;">
+            <div class="brand-crest">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div class="brand-text">
+              <h1 style="color: #FFFFFF;">BLISS ACADEMY</h1>
+              <span style="color: var(--accent-gold);">Knowledge &bull; Character &bull; Excellence</span>
+            </div>
+          </div>
+          <p>
+            Plot 14, Coral Crest Way, Off Admiralty Road, Lekki Phase 1, Lagos, Nigeria.<br>
+            Accredited by Cambridge Assessment International Education & Lagos State Ministry of Education.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-circle" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-circle" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-circle" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="social-circle" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Bliss</a></li>
+            <li><a href="#programs">Programs Offered</a></li>
+            <li><a href="#academic-calendar">Academic Calendar</a></li>
+            <li><a href="javascript:void(0)" onclick="openModal('admission-modal')">Online Admission</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Direct Portals -->
+        <div class="footer-col">
+          <h4>School Portals</h4>
+          <ul class="footer-links-list">
+            <li><a href="javascript:void(0)" onclick="quickDemoLogin('student')">Student LMS Portal</a></li>
+            <li><a href="javascript:void(0)" onclick="quickDemoLogin('parent')">Parent Access Portal</a></li>
+            <li><a href="javascript:void(0)" onclick="quickDemoLogin('teacher')">Faculty & Staff Portal</a></li>
+            <li><a href="javascript:void(0)" onclick="openPhase2Modal('fee-gateway')">Online Fee Payment (₦)</a></li>
+            <li><a href="javascript:void(0)" onclick="openPhase2Modal('gradebook')">Terminal Report Cards</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div class="footer-col footer-newsletter">
+          <h4>School Circulars</h4>
+          <p>Subscribe to receive official term circulars, calendar reminders, and PTA updates directly via email.</p>
+          <form class="newsletter-form-inline" onsubmit="event.preventDefault(); showToast('Subscribed to school circulars!', '📩');">
+            <input type="email" placeholder="Your email address..." required>
+            <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>&copy; 2025 Bliss Academy International, Lekki Lagos. All Rights Reserved.</div>
+        <div>Designed for School Board Presentation &bull; MVP Demo Ready</div>
+      </div>
+    </footer>
+
+  </div> <!-- End #public-site-view -->
+
+
+  <!-- ==========================================================================
+       VIEW B: ROLE-BASED PORTAL / LMS DASHBOARDS (QURTUBIKS STYLE)
+       ========================================================================== -->
+  <div id="portal-view">
+    <div class="portal-layout-container">
+      
+      <!-- Left Sidebar (Navy Blue Qurtubiks style) -->
+      <aside class="portal-sidebar">
+        <div>
+          <!-- Sidebar Brand Header -->
+          <div class="sidebar-header">
+            <div class="sidebar-brand">
+              <div class="brand-crest" style="width: 36px; height: 36px; font-size: 1rem;">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div class="brand-text">
+                <h2>BLISS ACADEMY</h2>
+                <span>PORTAL SYSTEM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Navigation Group -->
+          <div class="sidebar-nav-section">
+            <div class="nav-section-title">Core Modules</div>
+            <div class="sidebar-menu-list">
+              <div class="sidebar-menu-item active" onclick="showToast('Active Dashboard View', '📊')">
+                <div class="menu-item-left">
+                  <span class="menu-item-icon"><i class="fa-solid fa-table-columns"></i></span>
+                  <span>Dashboard</span>
+                </div>
+              </div>
+
+              <div class="sidebar-menu-item" onclick="showToast('Viewing Daily Schedule & Lectures', '🗓️')">
+                <div class="menu-item-left">
+                  <span class="menu-item-icon"><i class="fa-regular fa-calendar-days"></i></span>
+                  <span>Timetable</span>
+                </div>
+              </div>
+
+              <div class="sidebar-menu-item" onclick="showToast('Viewing Academic Announcements Feed', '📢')">
+                <div class="menu-item-left">
+                  <span class="menu-item-icon"><i class="fa-solid fa-bullhorn"></i></span>
+                  <span>Announcements</span>
+                </div>
+                <span class="counter-badge">3</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 2 Strategic Modules (With Badges for School Board Presentation) -->
+          <div class="sidebar-nav-section">
+            <div class="nav-section-title">Academic & Billing (Phase 2)</div>
+            <div class="sidebar-menu-list">
+              <div class="sidebar-menu-item" onclick="openPhase2Modal('fee-gateway')">
+                <div class="menu-item-left">
+                  <span class="menu-item-icon"><i class="fa-regular fa-credit-card"></i></span>
+                  <span>Fee Payments</span>
+                </div>
+                <span class="phase2-badge">Phase 2</span>
+              </div>
+
+              <div class="sidebar-menu-item" onclick="openPhase2Modal('gradebook')">
+                <div class="menu-item-left">
+                  <span class="menu-item-icon"><i class="fa-solid fa-chart-line"></i></span>
+                  <span>Report Cards</span>
+                </div>
+                <span class="phase2-badge">Phase 2</span>
+              </div>
+
+              <div class="sidebar-menu-item" onclick="openPhase2Modal('cbt-exams')">
+                <div class="menu-item-left">
+                  <span class="menu-item-icon"><i class="fa-solid fa-laptop-code"></i></span>
+                  <span>CBT Exams</span>
+                </div>
+                <span class="phase2-badge">Phase 2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Footer Action -->
+        <div class="sidebar-footer">
+          <button class="btn-exit-to-site" onclick="switchToView('website')">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Return to School Website</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Portal Main Content Area -->
+      <main class="portal-main-area">
+        
+        <!-- Portal Topbar -->
+        <header class="portal-topbar">
+          <!-- Role Switcher Control (Student | Parent | Teacher) -->
+          <div class="role-switcher-container">
+            <span class="role-switcher-label">Role Switcher:</span>
+            <div class="role-pill-group">
+              <button class="role-pill-btn active" data-role="student" onclick="switchRole('student')">
+                <i class="fa-solid fa-user-graduate"></i>
+                <span>Student</span>
+              </button>
+              <button class="role-pill-btn" data-role="parent" onclick="switchRole('parent')">
+                <i class="fa-solid fa-people-roof"></i>
+                <span>Parent</span>
+              </button>
+              <button class="role-pill-btn" data-role="teacher" onclick="switchRole('teacher')">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <span>Teacher</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Topbar Right Tools -->
+          <div class="topbar-right-tools">
+            <button class="topbar-tool-icon" onclick="showToast('Notification Center: 2 new school circulars.', '🔔')" aria-label="Notifications">
+              <i class="fa-regular fa-bell"></i>
+              <span class="tool-badge-dot"></span>
+            </button>
+            <button class="topbar-tool-icon" onclick="showToast('Parent-Teacher messaging channel active.', '✉️')" aria-label="Messages">
+              <i class="fa-regular fa-envelope"></i>
+            </button>
+
+            <!-- Current User Badge -->
+            <div class="user-profile-badge" onclick="openModal('demo-selector-modal')" style="cursor: pointer;" title="Click to switch demo account">
+              <img id="topbar-user-avatar" src="assets/images/avatar_student.jpg" alt="Avatar">
+              <div>
+                <div class="user-meta-name" id="topbar-user-name">Adebayo Adeleke</div>
+                <div class="user-meta-role" id="topbar-user-role">SSS 2A Scholar</div>
+              </div>
+              <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; color: var(--text-muted); margin-left: 4px;"></i>
+            </div>
+          </div>
+        </header>
+
+        <!-- Dynamic Portal Body -->
+        <div class="portal-content-body">
+          
+          <!-- ================================================================
+               ROLE 1: STUDENT VIEW CONTENT (Adebayo Adeleke - SSS 2A)
+               ================================================================ -->
+          <div id="student-view-content">
+            <!-- Welcome Banner -->
+            <div class="portal-welcome-banner">
+              <div class="welcome-text">
+                <h2>Welcome Back, Adebayo Adeleke! 🚀</h2>
+                <p>Term 1 Session (2025/2026) &bull; SSS 2A &bull; Emerald House &bull; 2 assignments due today.</p>
+              </div>
+              <div class="welcome-badges">
+                <div class="hero-stat-badge">
+                  <h4>3.88</h4>
+                  <span>Current GPA</span>
+                </div>
+                <div class="hero-stat-badge">
+                  <h4>97.2%</h4>
+                  <span>Attendance</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Student Main Grid -->
+            <div class="student-portal-layout">
+              <!-- Left Column: Courses & Live Announcements -->
+              <div>
+                <!-- Enrolled Courses Progress -->
+                <div class="courses-overview-section">
+                  <div class="section-head-flex">
+                    <h3>Enrolled Subjects & Progress</h3>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Term 1 WAEC / Cambridge Track</span>
+                  </div>
+                  <div class="courses-cards-row">
+                    <!-- Course 1 -->
+                    <div class="course-progress-card">
+                      <div class="course-card-top">
+                        <span class="course-code-tag">MTH-2A</span>
+                        <span style="font-weight: 800; color: var(--accent-coral);">88%</span>
+                      </div>
+                      <h4>Further Mathematics</h4>
+                      <p class="course-teacher-info">Mrs. Funmilayo Alabi &bull; Room 204</p>
+                      <div class="progress-bar-wrap">
+                        <div class="progress-fill" style="width: 88%;"></div>
+                      </div>
+                      <div class="progress-labels">
+                        <span>Syllabus Covered</span>
+                        <span>35 / 40 Topics</span>
+                      </div>
+                    </div>
+
+                    <!-- Course 2 -->
+                    <div class="course-progress-card">
+                      <div class="course-card-top">
+                        <span class="course-code-tag">PHY-2A</span>
+                        <span style="font-weight: 800; color: var(--accent-coral);">82%</span>
+                      </div>
+                      <h4>Physics & Practical Lab</h4>
+                      <p class="course-teacher-info">Mr. David Adeleke &bull; Physics Lab</p>
+                      <div class="progress-bar-wrap">
+                        <div class="progress-fill" style="width: 82%;"></div>
+                      </div>
+                      <div class="progress-labels">
+                        <span>Practicals Completed</span>
+                        <span>29 / 35 Practicals</span>
+                      </div>
+                    </div>
+
+                    <!-- Course 3 -->
+                    <div class="course-progress-card">
+                      <div class="course-card-top">
+                        <span class="course-code-tag">ENG-2A</span>
+                        <span style="font-weight: 800; color: var(--accent-coral);">94%</span>
+                      </div>
+                      <h4>English Language & Literature</h4>
+                      <p class="course-teacher-info">Mrs. Brenda Clark-Okon &bull; Room 105</p>
+                      <div class="progress-bar-wrap">
+                        <div class="progress-fill" style="width: 94%;"></div>
+                      </div>
+                      <div class="progress-labels">
+                        <span>Essays & Prose</span>
+                        <span>38 / 40 Essays</span>
+                      </div>
+                    </div>
+
+                    <!-- Course 4 -->
+                    <div class="course-progress-card">
+                      <div class="course-card-top">
+                        <span class="course-code-tag">ROB-2A</span>
+                        <span style="font-weight: 800; color: var(--accent-coral);">96%</span>
+                      </div>
+                      <h4>Robotics & IoT Engineering</h4>
+                      <p class="course-teacher-info">Engr. Ken Ezechukwu &bull; Innovation Hub</p>
+                      <div class="progress-bar-wrap">
+                        <div class="progress-fill" style="width: 96%;"></div>
+                      </div>
+                      <div class="progress-labels">
+                        <span>Prototypes Tested</span>
+                        <span>19 / 20 Projects</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Feed Section -->
+                <div class="section-head-flex" style="margin-top: 10px;">
+                  <h3>Classroom & School Announcements</h3>
+                  <span style="font-size: 0.8rem; color: var(--text-muted);">Real-time stream</span>
+                </div>
+                <div class="live-announcements-feed" id="student-feed-container">
+                  <!-- Rendered dynamically via app.js -->
+                </div>
+              </div>
+
+              <!-- Right Column: Schedule & Homework Tasks (Qurtubiks Image 5 style) -->
+              <div>
+                <!-- Today's Schedule -->
+                <div class="schedule-widget-card">
+                  <div class="section-head-flex" style="margin-bottom: 14px;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--primary-navy);">Today's Timetable</h4>
+                    <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-coral);">Wednesday, Term 1</span>
+                  </div>
+                  <div class="schedule-list" id="student-schedule-list">
+                    <!-- Rendered dynamically via app.js -->
+                  </div>
+                </div>
+
+                <!-- Homework Tasks -->
+                <div class="tasks-checklist-card">
+                  <div class="section-head-flex" style="margin-bottom: 14px;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--primary-navy);">Pending Homework</h4>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Click to mark done</span>
+                  </div>
+                  <div id="student-tasks-list">
+                    <!-- Rendered dynamically via app.js -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ================================================================
+               ROLE 2: PARENT VIEW CONTENT (Chief Mrs. Folake Adeleke)
+               ================================================================ -->
+          <div id="parent-view-content" style="display: none;">
+            <div class="parent-portal-layout">
+              
+              <!-- Child Selector Bar -->
+              <div class="child-selector-bar">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                  <span style="font-weight: 800; font-size: 0.9rem; color: var(--primary-navy);">Select Scholar:</span>
+                  <div class="child-pills-list" id="parent-child-pills">
+                    <!-- Rendered dynamically via app.js -->
+                  </div>
+                </div>
+                <div style="font-size: 0.82rem; color: var(--text-muted);">
+                  Parent: <strong>Chief (Mrs.) Folake Adeleke</strong>
+                </div>
+              </div>
+
+              <!-- Metrics Row -->
+              <div class="parent-metrics-row">
+                <div class="p-metric-card">
+                  <div class="p-metric-icon" style="background: #ECFDF5; color: #10B981;">
+                    <i class="fa-solid fa-user-check"></i>
+                  </div>
+                  <div class="p-metric-text">
+                    <h4 id="child-attendance-val">97.2%</h4>
+                    <p>Attendance Record</p>
+                    <span id="child-present-days" style="font-size: 0.72rem; color: var(--text-muted);">49 of 50 school days</span>
+                  </div>
+                </div>
+
+                <div class="p-metric-card">
+                  <div class="p-metric-icon" style="background: #EFF6FF; color: #2563EB;">
+                    <i class="fa-solid fa-chart-simple"></i>
+                  </div>
+                  <div class="p-metric-text">
+                    <h4 id="child-gpa-val">3.88 / 4.0</h4>
+                    <p>Cumulative GPA</p>
+                    <span style="font-size: 0.72rem; color: var(--text-muted);">Top 2% of SSS 2</span>
+                  </div>
+                </div>
+
+                <div class="p-metric-card">
+                  <div class="p-metric-icon" style="background: #FFF1EE; color: #FF6B4A;">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                  </div>
+                  <div class="p-metric-text">
+                    <h4 id="child-teacher-val" style="font-size: 1.15rem;">Mrs. Funmilayo Alabi</h4>
+                    <p>Class Form Tutor</p>
+                    <span style="font-size: 0.72rem; color: var(--text-muted);">Lead STEM Faculty</span>
+                  </div>
+                </div>
+
+                <div class="p-metric-card">
+                  <div class="p-metric-icon" style="background: #FEF3C7; color: #D97706;">
+                    <i class="fa-solid fa-award"></i>
+                  </div>
+                  <div class="p-metric-text">
+                    <h4>Exemplary</h4>
+                    <p>Conduct & Discipline</p>
+                    <span style="font-size: 0.72rem; color: var(--text-muted);">0 Infractions</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Parent Tuition & Fee Invoicing Card (In Naira ₦) -->
+              <div class="parent-fees-card">
+                <div class="fees-card-head">
+                  <div>
+                    <h3 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--primary-navy); margin-bottom: 4px;">School Fee Breakdown & Billing (₦)</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Academic Session 2025/2026 &bull; Official Invoicing Record</p>
+                  </div>
+                  <div class="fees-amount-box">
+                    <div class="fees-due-amount" id="parent-due-balance">₦480,000</div>
+                    <div class="fees-due-label">Outstanding Term 2 Balance (Due 15 Nov)</div>
+                  </div>
+                </div>
+
+                <!-- Invoice Table -->
+                <table class="invoice-table">
+                  <thead>
+                    <tr>
+                      <th>Fee Description</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      <th>Due / Payment Date</th>
+                    </tr>
+                  </thead>
+                  <tbody id="parent-invoice-tbody">
+                    <!-- Rendered dynamically via app.js -->
+                  </tbody>
+                </table>
+
+                <div class="fees-actions-bar">
+                  <div class="phase2-pitch-note">
+                    <i class="fa-solid fa-shield-halved" style="color: var(--success-green);"></i>
+                    <span>Secure 256-bit encryption. Automated receipts sent directly to parent WhatsApp and email.</span>
+                  </div>
+                  <button class="btn-pay-fees-trigger" onclick="openPhase2Modal('fee-gateway')">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <span>Pay Outstanding Fees (₦480,000)</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Announcements & School Circulars -->
+              <div>
+                <div class="section-head-flex">
+                  <h3>School Circulars & PTA Updates</h3>
+                  <span style="font-size: 0.8rem; color: var(--text-muted);">Parent Broadcast Channel</span>
+                </div>
+                <div class="live-announcements-feed" id="parent-feed-container">
+                  <!-- Rendered dynamically via app.js -->
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!-- ================================================================
+               ROLE 3: TEACHER VIEW CONTENT (Mrs. Funmilayo Alabi, M.Ed)
+               ================================================================ -->
+          <div id="teacher-view-content" style="display: none;">
+            <div class="teacher-portal-layout">
+              <!-- Left Column: Working Announcement Composer & Feed -->
+              <div>
+                <!-- Working "Create Post / Announcement" Box (Qurtubiks Image 1 exact clone) -->
+                <div class="create-post-widget">
+                  <div class="create-post-header">Create Announcement or Assignment</div>
+                  
+                  <div class="create-post-author-row">
+                    <img src="assets/images/avatar_teacher.jpg" alt="Mrs. Funmilayo Alabi">
+                    <input type="text" id="new-post-title" class="author-title-input" placeholder="Announcement Title (e.g., WAEC Physics Lab Mock Schedule)...">
+                  </div>
+
+                  <textarea id="new-post-content" class="post-textarea" placeholder="Dear Students and Parents, type your announcement message here..."></textarea>
+
+                  <div class="create-post-bottom-bar">
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                      <div class="post-attach-tools">
+                        <button class="attach-btn" title="Attach file" onclick="showToast('Syllabus PDF attached.', '📎')"><i class="fa-solid fa-paperclip"></i></button>
+                        <button class="attach-btn" title="Attach photo" onclick="showToast('Photo attached.', '🖼️')"><i class="fa-regular fa-image"></i></button>
+                        <button class="attach-btn" title="Voice note" onclick="showToast('Voice note recorded.', '🎙️')"><i class="fa-solid fa-microphone"></i></button>
+                      </div>
+                      <select id="new-post-category" class="form-select" style="padding: 6px 12px; font-size: 0.8rem; width: auto;">
+                        <option value="Academic Project">Academic Project</option>
+                        <option value="Homework">Homework Due</option>
+                        <option value="School Circular">General Notice</option>
+                        <option value="Urgent Notice">Urgent PTA</option>
+                      </select>
+                    </div>
+
+                    <button class="btn-publish-post" id="btn-publish-announcement">
+                      <i class="fa-solid fa-paper-plane" style="margin-right: 6px;"></i>
+                      <span>Publish</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Feed Section -->
+                <div class="section-head-flex">
+                  <h3>Active School & Class Stream</h3>
+                  <span style="font-size: 0.8rem; color: var(--text-muted);">Posts visible to SSS 2A students & parents</span>
+                </div>
+                <div class="live-announcements-feed" id="teacher-feed-container">
+                  <!-- Rendered dynamically via app.js -->
+                </div>
+              </div>
+
+              <!-- Right Column: Assigned Classes & Class Roster -->
+              <div>
+                <!-- Class Roster -->
+                <div class="roster-card">
+                  <div class="section-head-flex" style="margin-bottom: 14px;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--primary-navy);">SSS 2A Class Roster</h4>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">28 Scholars</span>
+                  </div>
+                  <div class="roster-list" id="teacher-roster-list">
+                    <!-- Rendered dynamically via app.js -->
+                  </div>
+                </div>
+
+                <!-- Teacher Teaching Schedule -->
+                <div class="schedule-widget-card">
+                  <div class="section-head-flex" style="margin-bottom: 14px;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--primary-navy);">Lectures Today</h4>
+                    <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-coral);">3 Sessions</span>
+                  </div>
+                  <div class="schedule-list">
+                    <div class="schedule-item active-class">
+                      <div class="schedule-item-info">
+                        <h5>Further Mathematics SSS 2A</h5>
+                        <span class="class-time"><i class="fa-regular fa-clock"></i> 10:00 AM - 11:15 AM</span>
+                      </div>
+                      <span class="class-room">Room 204</span>
+                    </div>
+                    <div class="schedule-item">
+                      <div class="schedule-item-info">
+                        <h5>Cambridge Advanced Math SSS 3</h5>
+                        <span class="class-time"><i class="fa-regular fa-clock"></i> 01:00 PM - 02:15 PM</span>
+                      </div>
+                      <span class="class-room">Room 302</span>
+                    </div>
+                    <div class="schedule-item">
+                      <div class="schedule-item-info">
+                        <h5>STEM Robotics Rover Mentorship</h5>
+                        <span class="class-time"><i class="fa-regular fa-clock"></i> 03:00 PM - 04:15 PM</span>
+                      </div>
+                      <span class="class-room">Innovation Hub</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- End .portal-content-body -->
+
+      </main>
+    </div>
+
+    <!-- Mobile Bottom Sticky Navigation Bar (Edukids inspired) -->
+    <nav class="mobile-bottom-nav">
+      <div class="mobile-nav-items">
+        <button class="mob-nav-item active" onclick="mobileNavSwitch('home')">
+          <i class="fa-solid fa-house mob-nav-icon"></i>
+          <span>Dashboard</span>
+        </button>
+        <button class="mob-nav-item" onclick="mobileNavSwitch('feed')">
+          <i class="fa-solid fa-bullhorn mob-nav-icon"></i>
+          <span>Feed</span>
+        </button>
+        <button class="mob-nav-item" onclick="mobileNavSwitch('fees')">
+          <i class="fa-solid fa-credit-card mob-nav-icon"></i>
+          <span>Fees</span>
+        </button>
+        <button class="mob-nav-item" onclick="mobileNavSwitch('profile')">
+          <i class="fa-solid fa-user-gear mob-nav-icon"></i>
+          <span>Role</span>
+        </button>
+      </div>
+    </nav>
+
+  </div> <!-- End #portal-view -->
+
+
+  <!-- ==========================================================================
+       MODALS: ADMISSION FORM, PAYMENT GATEWAY & REPORT CARD PREVIEWS
+       ========================================================================== -->
+
+  <!-- 1. ONLINE ADMISSION / ENROLLMENT FORM MODAL (16208f89... inspired) -->
+  <div class="modal-backdrop" id="admission-modal">
+    <div class="modal-window">
+      <button class="modal-close-btn" onclick="closeModal('admission-modal')">&times;</button>
+      
+      <!-- Stationery Header Banner -->
+      <img src="assets/images/admission_banner.webp" alt="Admission Banner" class="admission-banner-img">
+
+      <div class="modal-inner-padding" id="admission-modal-inner">
+        <h2 class="form-header-title">Application for School Enrollment 🚀</h2>
+        <p class="form-header-subtitle">
+          Please complete the registration form below. Our admissions committee will review your submission and contact you within 24 hours to schedule the diagnostic entrance assessment.
+        </p>
+
+        <form id="enrollment-application-form">
+          <!-- Section 1: Student Information -->
+          <span class="form-section-title">1. Student Information</span>
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label for="app-student-name">Student Full Name *</label>
+              <input type="text" id="app-student-name" class="form-input" placeholder="e.g. Chinedu Babatunde Okafor" required>
+            </div>
+            <div class="form-group">
+              <label for="app-student-dob">Date of Birth *</label>
+              <input type="date" id="app-student-dob" class="form-input" required>
+            </div>
+          </div>
+
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label for="app-gender-select">Gender *</label>
+              <select id="app-gender-select" class="form-select" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="app-grade-select">Grade Level Applying For *</label>
+              <select id="app-grade-select" class="form-select" required>
+                <option value="Early Years / Creche">Early Years / Kindergarten</option>
+                <option value="Primary 1 - 5">Lower Primary (Grades 1 - 5)</option>
+                <option value="Junior Secondary (JSS 1 - 3)">Junior Secondary School (JSS 1 - 3)</option>
+                <option value="Senior Secondary (SSS 1 - 3)" selected>Senior Secondary College (SSS 1 - 3)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Section 2: Parent / Guardian Information -->
+          <span class="form-section-title" style="margin-top: 10px;">2. Parent / Guardian Details</span>
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label for="app-parent-name">Parent / Guardian Full Name *</label>
+              <input type="text" id="app-parent-name" class="form-input" placeholder="e.g. Dr. (Mrs.) Chioma Okafor" required>
+            </div>
+            <div class="form-group">
+              <label for="app-parent-phone">Phone Number (WhatsApp Active) *</label>
+              <input type="tel" id="app-parent-phone" class="form-input" placeholder="+234 803 000 0000" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="app-parent-email">Email Address *</label>
+            <input type="email" id="app-parent-email" class="form-input" placeholder="parent.email@domain.com" required>
+          </div>
+
+          <!-- Section 3: Learning Mode & Documents -->
+          <span class="form-section-title" style="margin-top: 10px;">3. Preferences & Prior Records</span>
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label for="app-learning-mode">Preferred Learning Mode *</label>
+              <select id="app-learning-mode" class="form-select" required>
+                <option value="Full-Time Day Student">Full-Time Day Scholar</option>
+                <option value="Full Boarding Student">Full Boarding Scholar</option>
+                <option value="Flexible Day & After-School">Flexible Day + After-School Clubs</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="app-prev-school">Previous School Attended</label>
+              <input type="text" id="app-prev-school" class="form-input" placeholder="e.g. Corona School / Chrisland / Grange">
+            </div>
+          </div>
+
+          <!-- Document Upload Dropzone Mock -->
+          <div class="form-group">
+            <label>Upload Birth Certificate or Past Report Card (Optional)</label>
+            <div class="dropzone-box" onclick="showToast('File attached: report_sheet_2024.pdf', '📎')">
+              <div class="dropzone-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+              <div style="font-weight: 700; font-size: 0.88rem; color: var(--primary-navy);">Click to upload or drag files here</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">PDF, PNG, JPG up to 10MB</div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-form-submit">
+            <span>Submit Official Application</span>
+            <i class="fa-solid fa-paper-plane" style="margin-left: 6px;"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 2. PHASE 2: ONLINE FEE PAYMENT GATEWAY MODAL (Paystack / Flutterwave / Bank Transfer) -->
+  <div class="modal-backdrop" id="payment-gateway-modal">
+    <div class="modal-window">
+      <button class="modal-close-btn" onclick="closeModal('payment-gateway-modal')">&times;</button>
+      
+      <div class="modal-inner-padding">
+        <!-- Pitch Clarification Banner For School Board -->
+        <div class="pitch-clarity-banner">
+          <i class="fa-solid fa-lightbulb pitch-icon"></i>
+          <div>
+            <strong>Phase 2 Live Gateway Integration Ready:</strong>
+            <p>
+              This module connects directly to Paystack, Flutterwave, or bank card processors. Once the school board links the official commercial bank account, automated reconciliation and instant parent WhatsApp payment receipts will activate automatically!
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+          <div class="brand-crest" style="margin: 0 auto 10px; width: 44px; height: 44px; font-size: 1.2rem;">
+            <i class="fa-solid fa-credit-card"></i>
+          </div>
+          <h2 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; color: var(--primary-navy);">Bliss Academy Tuition Invoicing</h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Invoice #INV-2025-0892 &bull; Scholar: Adebayo Adeleke (SSS 2A)</p>
+        </div>
+
+        <!-- Payment Method Tabs -->
+        <div class="payment-tabs">
+          <button class="payment-tab-btn active"><i class="fa-regular fa-credit-card"></i> Pay with Card (Paystack)</button>
+          <button class="payment-tab-btn" onclick="showToast('Dedicated Wema/Providus virtual account generated.', '🏦')"><i class="fa-solid fa-building-columns"></i> Bank Transfer</button>
+          <button class="payment-tab-btn" onclick="showToast('USSD code: *737*000*892# for GTBank', '📱')"><i class="fa-solid fa-mobile-screen"></i> USSD</button>
+        </div>
+
+        <!-- Card Input Form -->
+        <div style="background: var(--neutral-bg); border-radius: var(--radius-lg); padding: 20px; border: 1px solid var(--border-subtle); margin-bottom: 20px;">
+          <div class="form-group">
+            <label>Card Number (Verve / Mastercard / Visa)</label>
+            <div style="position: relative;">
+              <input type="text" class="form-input" value="5399 &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 8821" readonly>
+              <i class="fa-brands fa-cc-mastercard" style="position: absolute; right: 14px; top: 12px; font-size: 1.4rem; color: #EB001B;"></i>
+            </div>
+          </div>
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label>Expiry Date</label>
+              <input type="text" class="form-input" value="12 / 28" readonly>
+            </div>
+            <div class="form-group">
+              <label>CVV / CVC</label>
+              <input type="password" class="form-input" value="892" readonly>
+            </div>
+          </div>
+        </div>
+
+        <!-- Amount Summary -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-top: 1px solid var(--border-subtle); margin-bottom: 20px;">
+          <span style="font-size: 0.95rem; font-weight: 700; color: var(--primary-navy);">Total Payable (Term 2 Tuition):</span>
+          <span style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; color: var(--accent-coral);">₦480,000</span>
+        </div>
+
+        <button class="btn-form-submit" id="btn-simulate-pay" onclick="simulatePaymentSuccess()">
+          <i class="fa-solid fa-lock" style="margin-right: 6px;"></i>
+          <span>Authorize Demo Payment (₦480,000)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 3. PHASE 2: TERMINAL REPORT CARD PREVIEW MODAL -->
+  <div class="modal-backdrop" id="gradebook-modal">
+    <div class="modal-window" style="max-width: 760px;">
+      <button class="modal-close-btn" onclick="closeModal('gradebook-modal')">&times;</button>
+      
+      <div class="modal-inner-padding">
+        <!-- Pitch Clarification Banner -->
+        <div class="pitch-clarity-banner">
+          <i class="fa-solid fa-chart-line pitch-icon"></i>
+          <div>
+            <strong>Phase 2 Automated Terminal Report Cards:</strong>
+            <p>
+              Teachers input scores into their portal; this module instantly compiles CA scores, WAEC/Cambridge mock scores, class positions, and teacher remarks into an official school-stamped PDF downloadable by parents!
+            </p>
+          </div>
+        </div>
+
+        <!-- High-Fidelity Report Sheet Mock -->
+        <div class="report-sheet-container">
+          <div class="report-sheet-header">
+            <div style="font-size: 0.8rem; letter-spacing: 2px; font-weight: 800; color: var(--accent-coral); text-transform: uppercase;">Official Academic Transcript</div>
+            <h3>BLISS ACADEMY INTERNATIONAL, LAGOS</h3>
+            <p>Term 1 Cumulative Performance & Progress Evaluation &bull; Session 2025/2026</p>
+          </div>
+
+          <div class="report-meta-grid">
+            <div><strong>Scholar:</strong> Adebayo Adeleke</div>
+            <div><strong>Scholar ID:</strong> BA-8012</div>
+            <div><strong>Class:</strong> SSS 2A (Emerald House)</div>
+            <div><strong>Position:</strong> 2nd of 28 Scholars</div>
+            <div><strong>Average:</strong> 92.4% (Grade A1)</div>
+            <div><strong>Attendance:</strong> 97.2% (Exemplary)</div>
+          </div>
+
+          <table class="report-table">
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Continuous Assmt (40)</th>
+                <th>Exam (60)</th>
+                <th>Total (100)</th>
+                <th>Grade</th>
+                <th>Tutor Remark</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Further Mathematics</td>
+                <td>38</td>
+                <td>57</td>
+                <td><strong>95</strong></td>
+                <td><span style="color: var(--success-green); font-weight: 800;">A1</span></td>
+                <td>Exceptional analytical depth</td>
+              </tr>
+              <tr>
+                <td>English Language & Literature</td>
+                <td>36</td>
+                <td>53</td>
+                <td><strong>89</strong></td>
+                <td><span style="color: var(--success-green); font-weight: 800;">A1</span></td>
+                <td>Eloquent spoken and written prose</td>
+              </tr>
+              <tr>
+                <td>Physics & Lab Practical</td>
+                <td>37</td>
+                <td>54</td>
+                <td><strong>91</strong></td>
+                <td><span style="color: var(--success-green); font-weight: 800;">A1</span></td>
+                <td>Superb laboratory investigation skill</td>
+              </tr>
+              <tr>
+                <td>Chemistry</td>
+                <td>36</td>
+                <td>52</td>
+                <td><strong>88</strong></td>
+                <td><span style="color: var(--success-green); font-weight: 800;">A1</span></td>
+                <td>Consistent mastery of reactions</td>
+              </tr>
+              <tr>
+                <td>Robotics & Software Engineering</td>
+                <td>40</td>
+                <td>58</td>
+                <td><strong>98</strong></td>
+                <td><span style="color: var(--success-green); font-weight: 800;">A1</span></td>
+                <td>Outstanding coding rover project</td>
+              </tr>
+              <tr>
+                <td>Economics & Data Analytics</td>
+                <td>37</td>
+                <td>53</td>
+                <td><strong>90</strong></td>
+                <td><span style="color: var(--success-green); font-weight: 800;">A1</span></td>
+                <td>Sound macroeconomic reasoning</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="background: var(--neutral-bg); padding: 14px; border-radius: var(--radius-sm); font-size: 0.82rem; margin-bottom: 16px;">
+            <p><strong>Form Tutor's Commendation:</strong> Adebayo is an exemplary, disciplined, and intellectually inquisitive scholar who consistently models the highest ideals of Bliss Academy.</p>
+            <p style="margin-top: 6px;"><strong>Principal's Executive Endorsement:</strong> An outstanding terminal performance. Highly recommended for the National Olympiad honors squad. &mdash; <em>Dr. (Mrs.) Helen Vance-Balogun, Principal</em></p>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px;">
+            <button class="btn-hero-primary" onclick="showToast('Downloading official signed PDF transcript...', '📥');">
+              <i class="fa-solid fa-file-pdf"></i>
+              <span>Download Signed PDF</span>
+            </button>
+            <button class="btn-hero-secondary" onclick="closeModal('gradebook-modal')">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 4. PHASE 2: CBT EXAMS & VIRTUAL CLASSROOM MODAL -->
+  <div class="modal-backdrop" id="cbt-modal">
+    <div class="modal-window">
+      <button class="modal-close-btn" onclick="closeModal('cbt-modal')">&times;</button>
+      <div class="modal-inner-padding" style="text-align: center;">
+        <div class="brand-crest" style="margin: 0 auto 16px; width: 56px; height: 56px; font-size: 1.5rem; background: var(--royal-blue-light); color: var(--royal-blue); border: none;">
+          <i class="fa-solid fa-laptop-code"></i>
+        </div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; color: var(--primary-navy); margin-bottom: 10px;">Computer-Based Testing & Virtual Classes</h3>
+        <p style="font-size: 0.92rem; color: var(--text-muted); max-width: 460px; margin: 0 auto 24px; line-height: 1.6;">
+          Phase 2 will integrate automated CBT timed quizzes, AI anti-cheating browser locks, and instant grading for WAEC, JAMB, and Cambridge mock examinations.
+        </p>
+
+        <div style="background: var(--neutral-bg); border-radius: var(--radius-lg); padding: 20px; text-align: left; margin-bottom: 24px;">
+          <div style="font-weight: 700; font-size: 0.88rem; color: var(--primary-navy); margin-bottom: 8px;">Upcoming Features in Phase 2:</div>
+          <ul style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.8;">
+            <li>&bull; Instant automated question bank generation from Cambridge & WAEC past questions</li>
+            <li>&bull; Secure student lockdown browser during exams</li>
+            <li>&bull; Live video lectures integration with Zoom & Microsoft Teams</li>
+            <li>&bull; Automated grading with instant gradebook sync</li>
+          </ul>
+        </div>
+
+        <button class="btn-hero-primary" onclick="closeModal('cbt-modal')">Got It, Return to Portal</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 5. DEMO ACCOUNT SELECTOR MODAL (1-Click Switcher for Board Presentation) -->
+  <div class="modal-backdrop" id="demo-selector-modal">
+    <div class="modal-window" style="max-width: 540px;">
+      <button class="modal-close-btn" onclick="closeModal('demo-selector-modal')">&times;</button>
+      
+      <div class="modal-inner-padding" style="text-align: center;">
+        <div class="brand-crest" style="margin: 0 auto 12px; width: 48px; height: 48px; font-size: 1.3rem;">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; color: var(--primary-navy); margin-bottom: 6px;">Select Demo Profile</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px;">
+          Experience Bliss Academy from any perspective. Choose a role below to explore the dashboard immediately:
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 14px; text-align: left;">
+          <!-- Option 1: Student -->
+          <div style="border: 1.5px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 16px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: 0.2s;" onmouseover="this.style.borderColor='var(--accent-coral)'" onmouseout="this.style.borderColor='var(--border-subtle)'" onclick="closeModal('demo-selector-modal'); quickDemoLogin('student');">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <img src="assets/images/avatar_student.jpg" alt="Student" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover;">
+              <div>
+                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--primary-navy);">Adebayo Adeleke (Scholar)</h4>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">SSS 2A &bull; Timetable, Courses & Homework</p>
+              </div>
+            </div>
+            <span class="btn-card-action" style="width: auto; padding: 6px 14px; font-size: 0.78rem;">Launch</span>
+          </div>
+
+          <!-- Option 2: Parent -->
+          <div style="border: 1.5px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 16px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: 0.2s;" onmouseover="this.style.borderColor='var(--accent-coral)'" onmouseout="this.style.borderColor='var(--border-subtle)'" onclick="closeModal('demo-selector-modal'); quickDemoLogin('parent');">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <img src="assets/images/avatar_parent.jpg" alt="Parent" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover;">
+              <div>
+                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--primary-navy);">Chief (Mrs.) Folake Adeleke (Parent)</h4>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">Scholar Attendance, GPA & School Fee Billing (₦)</p>
+              </div>
+            </div>
+            <span class="btn-card-action" style="width: auto; padding: 6px 14px; font-size: 0.78rem;">Launch</span>
+          </div>
+
+          <!-- Option 3: Teacher -->
+          <div style="border: 1.5px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 16px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: 0.2s;" onmouseover="this.style.borderColor='var(--accent-coral)'" onmouseout="this.style.borderColor='var(--border-subtle)'" onclick="closeModal('demo-selector-modal'); quickDemoLogin('teacher');">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <img src="assets/images/avatar_teacher.jpg" alt="Teacher" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover;">
+              <div>
+                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--primary-navy);">Mrs. Funmilayo Alabi, M.Ed (Faculty)</h4>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">Head of STEM &bull; Post Announcements & Class Roster</p>
+              </div>
+            </div>
+            <span class="btn-card-action" style="width: auto; padding: 6px 14px; font-size: 0.78rem;">Launch</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 6. CAMPUS VIDEO TOUR MODAL -->
+  <div class="modal-backdrop" id="video-tour-modal">
+    <div class="modal-window">
+      <button class="modal-close-btn" onclick="closeModal('video-tour-modal')">&times;</button>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-top-left-radius: var(--radius-xl); border-top-right-radius: var(--radius-xl);">
+        <img src="assets/images/bliss_campus_nigeria.jpg" alt="Video Preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.85;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #FFFFFF;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--accent-coral); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+            <i class="fa-solid fa-play" style="margin-left: 4px;"></i>
+          </div>
+          <h4 style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 800;">Bliss Academy Lekki Virtual Tour</h4>
+          <span style="font-size: 0.8rem; opacity: 0.9;">Walk through our Lagos campus, robotics labs & sporting facilities</span>
+        </div>
+      </div>
+      <div class="modal-inner-padding" style="text-align: center;">
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;">
+          Experience our world-class architecture, Olympic swimming pool, robotics centers, and interactive smart classrooms.
+        </p>
+        <button class="btn-hero-primary" onclick="closeModal('video-tour-modal'); openModal('admission-modal');">
+          Book In-Person Campus Visit
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
